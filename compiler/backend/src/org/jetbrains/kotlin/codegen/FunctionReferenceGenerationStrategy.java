@@ -189,7 +189,8 @@ public class FunctionReferenceGenerationStrategy extends FunctionGenerationStrat
                 result = codegen.generateNewArray(fakeExpression, referencedFunction.getReturnType(), fakeResolvedCall);
             }
             else {
-                result = codegen.generateConstructorCall(fakeResolvedCall, returnType);
+                Type constructedType = codegen.typeMapper.mapTypeAsDeclaration(referencedFunction.getReturnType());
+                result = codegen.generateConstructorCall(fakeResolvedCall, constructedType);
             }
         }
         else {
